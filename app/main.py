@@ -1,6 +1,7 @@
 from typing import Dict, List
 from app.Knights.knights import Knights, battle as fight_logic
 
+
 KNIGHTS: Dict[str, Dict[str, any]] = {
     "lancelot": {
         "name": "Lancelot",
@@ -97,6 +98,7 @@ all_knights: List[Knights] = [lancelot, arthur, mordred, red_knight]
 for knight in all_knights:
     knight.prepare_for_battle()
 
+
 def battle(knights_config: dict) -> dict:
     knights = {
         name: Knights(data)
@@ -111,6 +113,7 @@ def battle(knights_config: dict) -> dict:
         knight.name: knight.hp
         for knight in knights.values()
     }
+
 
 results: Dict[str, int] = {knight.name: knight.hp for knight in all_knights}
 
