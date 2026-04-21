@@ -1,5 +1,5 @@
 from typing import Dict, List
-from Knights.knights import Knights, battle
+from app.Knights.knights import Knights, battle
 
 KNIGHTS: Dict[str, Dict[str, any]] = {
     "lancelot": {
