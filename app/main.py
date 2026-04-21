@@ -1,6 +1,7 @@
+from typing import Dict, List
 from Knights.knights import Knights, battle
 
-KNIGHTS = {
+KNIGHTS: Dict[str, Dict[str, any]] = {
     "lancelot": {
         "name": "Lancelot",
         "power": 35,
@@ -87,18 +88,18 @@ KNIGHTS = {
     }
 }
 
-lancelot = Knights(KNIGHTS["lancelot"])
-arthur = Knights(KNIGHTS["arthur"])
-mordred = Knights(KNIGHTS["mordred"])
-red_knight = Knights(KNIGHTS["red_knight"])
+lancelot: Knights = Knights(KNIGHTS["lancelot"])
+arthur: Knights = Knights(KNIGHTS["arthur"])
+mordred: Knights = Knights(KNIGHTS["mordred"])
+red_knight: Knights = Knights(KNIGHTS["red_knight"])
 
-all_knights = [lancelot, arthur, mordred, red_knight]
+all_knights: List[Knights] = [lancelot, arthur, mordred, red_knight]
 for knight in all_knights:
     knight.prepare_for_battle()
 
 battle(lancelot, mordred)
 battle(arthur, red_knight)
 
-results = {knight.name: knight.hp for knight in all_knights}
+results: Dict[str, int] = {knight.name: knight.hp for knight in all_knights}
 
 print(results)

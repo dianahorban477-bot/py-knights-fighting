@@ -1,14 +1,17 @@
-class Knights:
-    def __init__(self, data):
-        self.name = data["name"]
-        self.hp = data["hp"]
-        self.power = data["power"]
-        self.armour = data["armour"]
-        self.weapon = data["weapon"]
-        self.potion = data["potion"]
-        self.protection = 0
+from typing import Dict, Any, List, Optional
 
-    def prepare_for_battle(self):
+
+class Knights:
+    def __init__(self, data: Dict[str, Any]) -> None:
+        self.name: str = data["name"]
+        self.hp: int = data["hp"]
+        self.power: int = data["power"]
+        self.armour: List[Dict[str, Any]] = data["armour"]
+        self.weapon: Dict[str, Any] = data["weapon"]
+        self.potion: Optional[Dict[str, Any]] = data["potion"]
+        self.protection: int = 0
+
+    def prepare_for_battle(self) -> None:
         for arm in self.armour:
             self.protection += arm["protection"]
 
@@ -20,8 +23,8 @@ class Knights:
             self.hp += self.potion["effect"].get("hp", 0)
 
 
-def battle(knight1, knight2):
-    damage_to_k1 = max(0, knight2.power - knight1.protection)
-    damage_to_k2 = max(0, knight1.power - knight2.protection)
+def battle(knight1, knight2) -> None:
+    damage_to_k1: int = max(0, knight2.power - knight1.protection)
+    damage_to_k2: int = max(0, knight1.power - knight2.protection)
     knight1.hp = max(0, knight1.hp - damage_to_k1)
     knight2.hp = max(0, knight2.hp - damage_to_k2)
